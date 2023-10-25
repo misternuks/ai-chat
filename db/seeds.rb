@@ -7,3 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+['Media English 1', 'Media English 5', 'Foundational Literacies 5', 'EIC 2 10', "Euan's cool class"].each do |name|
+  Course.find_or_create_by(course_name: name)
+end
