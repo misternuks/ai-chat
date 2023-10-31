@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_10_30_215612) do
+ActiveRecord::Schema[7.1].define(version: 2023_10_31_010504) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,15 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_215612) do
     t.string "course_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "topic_name"
+    t.text "topic_content"
+    t.bigint "unit_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unit_id"], name: "index_topics_on_unit_id"
   end
 
   create_table "units", force: :cascade do |t|
@@ -40,5 +49,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_10_30_215612) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "topics", "units"
   add_foreign_key "units", "courses"
 end
