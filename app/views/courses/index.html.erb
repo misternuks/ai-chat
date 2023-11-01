@@ -1,8 +1,23 @@
-<h1>Yo what up from the course index</h1>
-<ul>
-  <% @courses.each do |course| %>
-    <li>
-      <%= course.course_name %>
-    </li>
-  <% end %>
-</ul>
+<div class="container text-center p-3 m-3">
+  <h1>Welcome to AI Chat!</h1>
+  <div class="d-flex align-items-center justify-content-center gap-1">
+    <div id="course-dropdown">
+      <select class="form-control" id="course-select">
+        <option value="">Select a course</option>
+        <%= options_from_collection_for_select(@courses, 'id', 'course_name') %>
+      </select>
+    </div>
+    <div id="unit-dropdown" style="display: none;">
+      <select class="form-control" id="unit-select">
+        <option value="">Select a Unit</option>
+      </select>
+    </div>
+    <div id="topic-dropdown" style="display: none;">
+      <select class="form-control" id="topic-select">
+        <option value="">Select a Topic</option>
+      </select>
+    </div>
+  </div>
+  <button id="proceed-button" class="btn btn-primary m-3" style="display: none;">Proceed to Next Page</button>
+</div>
+<%= javascript_include_tag 'courses' %>

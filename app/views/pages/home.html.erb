@@ -1,2 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Welcome to AI Chat!</h1>
+<div id="course-dropdown">
+  <select name="" id="course-select">
+    <option value="">Select a course</option>
+    <%= options_from_collection_for_select(@courses, 'id', 'course_name') %>
+  </select>
+</div>
+<div id="unit-dropdown" style="display: none;">
+  <select id="unit-select">
+    <option value="">Select a Unit</option>
+  </select>
+</div>
+<div id="topic-dropdown" style="display: none;">
+  <select id="topic-select">
+    <option value="">Select a Topic</option>
+  </select>
+</div>
+<button id="proceed-button" style="display: none;">Proceed to Next Page</button>
