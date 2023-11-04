@@ -12,11 +12,19 @@ class ChatsController < ApplicationController
   end
 
   def create
-    @chat = Chat.new(chat_params)
+    user = current_user
+    course = Course.find(params[:course_id])
+    unit = Unit.find(params[:unit_id])
+    topic = Topic.find(params[:topic_id])
+
+    chat = Chat.find_or_create_by(user: user, course: course, unit: unit, topic: topic)
+
+
+
     if @chat.save
-      redirect_to @chat
+      render json: { chat_id: chat.id }
     else
-      render :new, status: ;unprocessable_entity
+      render json: { error: chat.errors.full_messages }, status: :unprocessable_entity
     end
   end
 

@@ -45,3 +45,37 @@ $(document).ready(function() {
     $("#proceed-button").show();
   });
 });
+
+// Add this JavaScript code in your topics.js or relevant JavaScript file
+
+$(document).ready(function() {
+  // Listen for a click event on the "Create Chat" button
+  $("#proceed-button").on("click", function() {
+    // Retrieve the selected course, unit, and topic IDs
+    const courseId = $("#course-select").val();
+    const unitId = $("#unit-select").val();
+    const topicId = $("#topic-select").val();
+
+    // Send an AJAX request to create or find the chat instance
+    $.ajax({
+      url: "/chats", // The URL to the ChatsController
+      type: "POST", // Use POST to create a new chat instance
+      data: {
+        course_id: courseId,
+        unit_id: unitId,
+        topic_id: topicId
+      },
+      headers: {
+        "X-CSRF-Token": Rails.csrfToken() // Include the CSRF token
+      },
+      success: function(data) {
+        // Redirect the user to the chat view
+        window.location.href = "/chats/" + data.chat_id; // Adjust the URL structure as needed
+      },
+      error: function(error) {
+        // Handle the error, e.g., display an error message
+        console.log("Error creating chat: " + error);
+      }
+    });
+  });
+});
