@@ -1,6 +1,9 @@
 class UnitsController < ApplicationController
   def index
-    @units = Course.find(params[:course_id]).units
-    render partial: "units/options", locals: { units: @units }
+    @units = Unit.all
+  end
+
+  def show
+    @unit = Unit.find(params[:id])
   end
 end

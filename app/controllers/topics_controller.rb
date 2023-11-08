@@ -1,6 +1,9 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Unit.find(params[:unit_id]).topics
-    render partial: "topics/options", locals: { topics: @topics }
+    @topics = Topic.all
+  end
+
+  def show
+    @topic = Topic.find(params[:id])
   end
 end

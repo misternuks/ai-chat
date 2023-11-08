@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   resources :units
   resources :topics
   resources :chats
+  get '/fetch_units', to: 'chats#fetch_units'
+  get '/fetch_topics', to: 'chats#fetch_topics'
 end

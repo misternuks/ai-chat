@@ -9,6 +9,9 @@ class ChatsController < ApplicationController
 
   def new
     @chat = Chat.new
+    @courses = Course.all
+    @units = []
+    @topics = []
   end
 
   def create
@@ -19,12 +22,10 @@ class ChatsController < ApplicationController
 
     chat = Chat.find_or_create_by(user: user, course: course, unit: unit, topic: topic)
 
-
-
     if @chat.save
-      render json: { chat_id: chat.id }
+      redirect_to @chat
     else
-      render json: { error: chat.errors.full_messages }, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 

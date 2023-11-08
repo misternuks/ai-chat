@@ -1,0 +1,10 @@
+<div class="d-flex flex-column justify-content-center align-items-center text-center">
+  <h1>Welcome to <%= @unit.unit_name %>! Select the unit topic.</h1>
+  <ul class="list-group">
+    <% @unit.topics.each do |topic| %>
+      <li class="list-group-item"><a class ="text-decoration-none" href="/topics/<%= topic.id %>/">
+          <%= topic.topic_name %>
+        </a></li>
+    <% end %>
+  </ul>
+</div>
