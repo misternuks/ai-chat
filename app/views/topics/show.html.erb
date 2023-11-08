@@ -1,1 +1,9 @@
-Yo what up from <%= @topic.topic_name %>.
+<div class="d-flex flex-column justify-content-center align-items-center text-center">
+  <h1>Welcome to <%= @topic.unit.course.course_name %> <%= @topic.unit.unit_name %> <%= @topic.topic_name %>.</h1>
+  <% if @topic.chat %>
+    <% @chat = @topic.chat  %>
+    <%= render 'chats/show' %>
+  <% else %>
+    <p>No chats yet!</p>
+  <% end %>
+</div>

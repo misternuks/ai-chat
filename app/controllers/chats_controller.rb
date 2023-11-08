@@ -5,6 +5,7 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
+    @message = Message.new
   end
 
   def new
@@ -16,11 +17,8 @@ class ChatsController < ApplicationController
 
   def create
     user = current_user
-    course = Course.find(params[:course_id])
-    unit = Unit.find(params[:unit_id])
     topic = Topic.find(params[:topic_id])
-
-    chat = Chat.find_or_create_by(user: user, course: course, unit: unit, topic: topic)
+    chat = Chat.find_or_create_by(user: user, topic: topic)
 
     if @chat.save
       redirect_to @chat

@@ -5,5 +5,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find(params[:id])
+    @chat = @topic.chat
+    @message = Message.new
   end
 end
