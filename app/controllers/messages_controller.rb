@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to chat_path(@chat)
     else
-      raise
+      render "chat/show", status: :unprocessable_entity
     end
   end
 
