@@ -11,7 +11,9 @@
     <meta name="csrf-token" content="<%= form_authenticity_token %>">
   </head>
   <body>
-    <%# <%= render "shared/navbar" %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
     <%= yield %>
   </body>
